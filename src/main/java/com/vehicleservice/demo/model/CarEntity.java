@@ -1,4 +1,4 @@
-package com.vehicleservice.demo.entity;
+package com.vehicleservice.demo.model;
 import lombok.Data;
 
 
@@ -27,6 +27,7 @@ public class CarEntity {
     @Column(name = "fab_year")
     private Integer fabYear;
 
-    @OneToOne(mappedBy = "car")
-    private OwnerEntity ownerEntity;
+
+
+
 }

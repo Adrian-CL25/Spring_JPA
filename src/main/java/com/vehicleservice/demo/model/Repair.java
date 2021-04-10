@@ -1,4 +1,4 @@
-package com.vehicleservice.demo.entity;
+package com.vehicleservice.demo.model;
 
 import lombok.Data;
 
