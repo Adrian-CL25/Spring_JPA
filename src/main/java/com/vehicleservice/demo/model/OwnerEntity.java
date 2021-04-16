@@ -35,7 +35,7 @@ public class OwnerEntity implements Serializable {
     private Integer phone;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "owner_id", referencedColumnName = "car_id")
+    @JoinColumn(name = "car_id"/* trebuie un FK pentru a completa relatia */, referencedColumnName = "car_id"/* numele coloanei referentiate din tabelul car*/)
     private CarEntity carEntity;
 
     @OneToMany(cascade = CascadeType.ALL)

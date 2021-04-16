@@ -1,0 +1,14 @@
+
+//asa arata un request daca vrei ca entitatea owner sa creeze si entitatea copil car in acelasi timp
+//id-urile nu se pun in request la create, ele au auto-increment , cate un rand in tabel va fi inserat in ambele tabele
+// si se va atribui un id incrementat automat
+{
+  "name": "bb",
+  "email": "bbba@gmail.com",
+  "phone": 123455,
+  "carEntity": {
+    "marca": "audi",
+    "model": "a7",
+    "fabYear": 1234
+  }
+}

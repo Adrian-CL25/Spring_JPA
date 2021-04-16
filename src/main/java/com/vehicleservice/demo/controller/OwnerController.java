@@ -35,6 +35,12 @@ public class OwnerController {
     }
 
 
+    @PostMapping(value = "/owner/create", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public OwnerEntity ownerEntity(@RequestBody @Valid OwnerEntity ownerEntity) {
+
+        return ownerService.addNewOwner(ownerEntity);
+    }
+
     @PutMapping(value = "/add/{id}", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
     public OwnerEntity ownerEntity(@PathVariable(name = "id") Integer id,
                                    @RequestBody @Valid OwnerEntity ownerEntity) {
@@ -42,7 +48,5 @@ public class OwnerController {
         ownerEntity.setCarEntity(ownerEntity.getCarEntity());
         return ownerService.addNewOwner(ownerEntity);
     }
-
-
 
 }
