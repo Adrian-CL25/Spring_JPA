@@ -1,9 +1,7 @@
 package com.vehicleservice.demo.service;
 
 import com.vehicleservice.demo.model.CarEntity;
-import com.vehicleservice.demo.model.OwnerEntity;
 import com.vehicleservice.demo.repository.CarRepository;
-import com.vehicleservice.demo.repository.OwnerRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +12,8 @@ public class CarService {
     @Autowired
     private final CarRepository carRepository;
 
-    public CarEntity addNewCar(CarEntity newCar){
-        return carRepository.save(newCar);
-
-    }
+//    public CarEntity addNewCar(CarEntity newCar){
+//        return carRepository.save(newCar);
+//
+//    }
 }

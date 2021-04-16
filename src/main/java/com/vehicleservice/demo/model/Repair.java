@@ -3,11 +3,12 @@ package com.vehicleservice.demo.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
 @Table(name = "repair")
-public class Repair {
+public class Repair implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "repair_id")
@@ -18,4 +19,7 @@ public class Repair {
 
     @Column(name = "price")
     private String price;
+
+    @Column(name="owner_request_id")
+    private int owner_request_id;
 }
