@@ -1,6 +1,6 @@
 package com.vehicleservice.demo.repository;
 
-import com.vehicleservice.demo.model.OwnerEntity;
+import com.vehicleservice.demo.domain.entity.OwnerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

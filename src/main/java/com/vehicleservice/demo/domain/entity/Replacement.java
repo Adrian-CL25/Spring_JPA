@@ -1,4 +1,4 @@
-package com.vehicleservice.demo.model;
+package com.vehicleservice.demo.domain.entity;
 
 import lombok.Data;
 
@@ -7,11 +7,11 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@Table(name = "repair")
-public class Repair implements Serializable {
+@Table(name = "replacement")
+public class Replacement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "repair_id")
+    @Column(name = "replacement_id")
     private Integer id;
 
     @Column(name = "task_name")
@@ -19,6 +19,7 @@ public class Repair implements Serializable {
 
     @Column(name = "price")
     private String price;
+
 
     @Column(name="owner_request_id")
     private int owner_request_id;

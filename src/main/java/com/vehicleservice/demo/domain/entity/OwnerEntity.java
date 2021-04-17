@@ -1,4 +1,4 @@
-package com.vehicleservice.demo.model;
+package com.vehicleservice.demo.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

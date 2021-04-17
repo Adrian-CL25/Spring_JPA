@@ -1,16 +1,21 @@
 package com.vehicleservice.demo.service;
 
 
-import com.vehicleservice.demo.model.OwnerEntity;
+import com.vehicleservice.demo.domain.entity.Repair;
+import com.vehicleservice.demo.domain.model.OwnerDto;
+import com.vehicleservice.demo.domain.entity.OwnerEntity;
 
+import com.vehicleservice.demo.mapper.OwnerEntityToOwnerDtoMapper;
 import com.vehicleservice.demo.repository.OwnerRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Data
@@ -18,6 +23,14 @@ import java.util.List;
 public class OwnerService {
     @Autowired
     private final OwnerRepository ownerRepository;
+    private final OwnerEntityToOwnerDtoMapper ownerEntityToOwnerDtoMapper;
+
+
+    public List<OwnerDto> getAllOwners() {
+        return ownerRepository.findAll().stream()
+                .map(ownerEntityToOwnerDtoMapper::mapEntityToDto)
+                .collect(Collectors.toList());
+    }
 
 
     public OwnerEntity findOwnerById(Integer id) {
@@ -29,5 +42,10 @@ public class OwnerService {
     }
 
 
-
 }
+
+
+
+
+
+

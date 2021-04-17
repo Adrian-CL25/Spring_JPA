@@ -1,6 +1,6 @@
 package com.vehicleservice.demo.repository;
 
-import com.vehicleservice.demo.model.CarEntity;
+import com.vehicleservice.demo.domain.entity.CarEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
