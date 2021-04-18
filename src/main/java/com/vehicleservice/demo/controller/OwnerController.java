@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
 
@@ -33,15 +31,10 @@ public class OwnerController {
     }
 
 
-    @PutMapping(value = "/add/{id}", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
-    public OwnerEntity ownerEntity(@PathVariable(name = "id") Integer id,
-                                   @RequestBody @Valid OwnerEntity ownerEntity) {
-        ownerEntity.setId(id);
-        ownerEntity.setCarEntity(ownerEntity.getCarEntity());
-        return ownerService.addNewOwner(ownerEntity);
+    @PutMapping(value = "/add/new",consumes = "application/json",produces = MediaType.APPLICATION_JSON_VALUE)
+    public OwnerDto createOwnerDto (@RequestBody  OwnerDto ownerDto){
+        return ownerService.createOwner(ownerDto);
     }
-
-
 
 
 

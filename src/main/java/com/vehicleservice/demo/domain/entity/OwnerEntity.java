@@ -1,6 +1,7 @@
 package com.vehicleservice.demo.domain.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "owner")
 public class OwnerEntity implements Serializable {
     @Id
@@ -30,6 +32,7 @@ public class OwnerEntity implements Serializable {
 
     @Column(name = "request_id")
     private Integer repairRequestId;
+
 
     @Column(name = "phone_no")
     private Integer phone;

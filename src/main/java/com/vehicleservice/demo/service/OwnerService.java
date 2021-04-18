@@ -5,6 +5,7 @@ import com.vehicleservice.demo.domain.entity.Repair;
 import com.vehicleservice.demo.domain.model.OwnerDto;
 import com.vehicleservice.demo.domain.entity.OwnerEntity;
 
+import com.vehicleservice.demo.mapper.OwnerDtoToOwnerEntityMapper;
 import com.vehicleservice.demo.mapper.OwnerEntityToOwnerDtoMapper;
 import com.vehicleservice.demo.repository.OwnerRepository;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class OwnerService {
     @Autowired
     private final OwnerRepository ownerRepository;
     private final OwnerEntityToOwnerDtoMapper ownerEntityToOwnerDtoMapper;
+    private final OwnerDtoToOwnerEntityMapper ownerDtoToOwnerEntityMapper;
 
 
     public List<OwnerDto> getAllOwners() {
@@ -42,6 +44,12 @@ public class OwnerService {
     }
 
 
+    public OwnerDto createOwner(OwnerDto ownerDto) {
+        OwnerEntity ownerEntity = ownerDtoToOwnerEntityMapper.mapDtoToEntity(ownerDto);
+        OwnerEntity savedOwner = ownerRepository.save(ownerEntity);
+        return  ownerEntityToOwnerDtoMapper.mapEntityToDto(savedOwner);
+
+    }
 }
 
 

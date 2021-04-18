@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class OwnerEntityToOwnerDtoMapper{
     public CarEntity carEntity;
+    public Repair repair;
 
     public OwnerDto mapEntityToDto(OwnerEntity ownerEntity){
         return OwnerDto.builder()
