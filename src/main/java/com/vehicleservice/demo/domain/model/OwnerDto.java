@@ -19,18 +19,17 @@ import java.util.List;
 
 public class OwnerDto {
 
-    private Integer id;
-
     private String name;
 
     private String email;
 
-    private Integer repairRequestId;
-
-
     private Integer phone;
 
     private CarEntity carEntity;
+
+    List<Integer> repairIdsList;
+
+    List<Integer> replacementIdsList;
 
 
 }

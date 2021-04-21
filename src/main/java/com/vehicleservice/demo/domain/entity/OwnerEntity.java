@@ -31,7 +31,7 @@ public class OwnerEntity implements Serializable {
     private String email;
 
     @Column(name = "request_id")
-    private Integer repairRequestId;
+    private Integer requestId;
 
 
     @Column(name = "phone_no")
@@ -42,12 +42,12 @@ public class OwnerEntity implements Serializable {
     private CarEntity carEntity;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_request_id", referencedColumnName = "request_id")
+    @JoinColumn(name = "repair_id", referencedColumnName = "request_id")
     List<Repair> repairList = new ArrayList<>();
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_request_id", referencedColumnName = "request_id")
+    @JoinColumn(name = "replacement_id", referencedColumnName = "request_id")
     List<Replacement> replacementList = new ArrayList<>();
 
 

@@ -39,17 +39,15 @@ public class OwnerService {
         return ownerRepository.findById(id).orElseThrow(null);
     }
 
-    public OwnerEntity addNewOwner(OwnerEntity newOwner) {
-        return ownerRepository.save(newOwner);
-    }
-
 
     public OwnerDto createOwner(OwnerDto ownerDto) {
         OwnerEntity ownerEntity = ownerDtoToOwnerEntityMapper.mapDtoToEntity(ownerDto);
         OwnerEntity savedOwner = ownerRepository.save(ownerEntity);
-        return  ownerEntityToOwnerDtoMapper.mapEntityToDto(savedOwner);
+        return ownerEntityToOwnerDtoMapper.mapEntityToDto(savedOwner);
 
     }
+
+
 }
 
 
