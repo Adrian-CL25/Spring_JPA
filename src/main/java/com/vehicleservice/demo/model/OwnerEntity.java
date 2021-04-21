@@ -28,8 +28,9 @@ public class OwnerEntity implements Serializable {
             columnDefinition = "TEXT")
     private String email;
 
-    @Column(name = "request_id")
-    private Integer repairRequestId;
+//    @Column(name = "request_id")
+//    private Integer requestId;
+
 
     @Column(name = "phone_no")
     private Integer phone;
@@ -38,15 +39,11 @@ public class OwnerEntity implements Serializable {
     @JoinColumn(name = "car_id"/* trebuie un FK pentru a completa relatia */, referencedColumnName = "car_id"/* numele coloanei referentiate din tabelul car*/)
     private CarEntity carEntity;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_request_id", referencedColumnName = "request_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
     List<Repair> repairList = new ArrayList<>();
 
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_request_id", referencedColumnName = "request_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
     List<Replacement> replacementList = new ArrayList<>();
-
-
 
 }

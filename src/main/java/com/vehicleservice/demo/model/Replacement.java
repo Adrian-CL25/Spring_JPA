@@ -1,6 +1,10 @@
 package com.vehicleservice.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,7 +14,7 @@ import java.io.Serializable;
 @Table(name = "replacement")
 public class Replacement implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "replacement_id")
     private Integer id;
 
@@ -20,7 +24,10 @@ public class Replacement implements Serializable {
     @Column(name = "price")
     private String price;
 
-
-    @Column(name="owner_request_id")
-    private int owner_request_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id")
+    @ToString.Exclude
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude
+    private OwnerEntity ownerEntity;
 }
