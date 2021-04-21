@@ -33,13 +33,17 @@ public class OwnerController {
     }
 
 
-    @PostMapping(value = "/add/new",consumes = "application/json",produces = MediaType.APPLICATION_JSON_VALUE)
-    public OwnerDto createOwnerDto (@RequestBody @Valid OwnerDto ownerDto){
-        return ownerService.createOwner(ownerDto);
+    @PostMapping(value = "/owner/create", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public OwnerEntity ownerEntity(@RequestBody @Valid OwnerEntity ownerEntity) {
+        return ownerService.addNewOwner(ownerEntity);
     }
 
-
-
+    @PutMapping(value = "/update/{id}", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public OwnerEntity ownerEntity(@PathVariable(name = "id") Integer id,
+                                   @RequestBody @Valid OwnerEntity ownerEntity) {
+        ownerEntity.setId(id);
+        return ownerService.addNewOwner(ownerEntity);
+    }
 
 
 }

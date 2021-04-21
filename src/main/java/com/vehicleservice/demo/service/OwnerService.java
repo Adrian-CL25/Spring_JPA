@@ -40,14 +40,9 @@ public class OwnerService {
     }
 
 
-    public OwnerDto createOwner(OwnerDto ownerDto) {
-        OwnerEntity ownerEntity = ownerDtoToOwnerEntityMapper.mapDtoToEntity(ownerDto);
-        OwnerEntity savedOwner = ownerRepository.save(ownerEntity);
-        return ownerEntityToOwnerDtoMapper.mapEntityToDto(savedOwner);
-
+    public OwnerEntity addNewOwner(OwnerEntity ownerEntity) {
+            return ownerRepository.save(ownerEntity);
     }
-
-
 }
 
 

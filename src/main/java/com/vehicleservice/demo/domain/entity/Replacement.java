@@ -21,6 +21,4 @@ public class Replacement implements Serializable {
     private String price;
 
 
-    @Column(name="owner_request_id")
-    private int owner_request_id;
 }

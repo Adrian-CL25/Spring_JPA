@@ -20,6 +20,4 @@ public class Repair implements Serializable {
     @Column(name = "price")
     private String price;
 
-    @Column(name="owner_request_id")
-    private int owner_request_id;
 }
