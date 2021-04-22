@@ -1,0 +1,44 @@
+
+//asa arata un request daca vrei ca entitatea owner sa creeze si entitatea copil car in acelasi timp
+//id-urile nu se pun in request la create, ele au auto-increment , cate un rand in tabel va fi inserat in ambele tabele
+// si se va atribui un id incrementat automat
+
+//din loguri vedem ca face insert si in entitatile copil:
+//Hibernate: insert into car (fab_year, marca, model) values (?, ?, ?)
+//Hibernate: insert into owner (car_id, email, name, phone_no) values (?, ?, ?, ?)
+//Hibernate: insert into repair (owner_id, price, task_name) values (?, ?, ?)
+//Hibernate: insert into repair (owner_id, price, task_name) values (?, ?, ?)
+//Hibernate: insert into replacement (owner_id, price, task_name) values (?, ?, ?)
+//Hibernate: insert into replacement (owner_id, price, task_name) values (?, ?, ?)
+
+
+{
+  "name": "bb",
+  "email": "bbba@gmail.com",
+  "phone": 123455,
+  "carEntity": {
+    "marca": "audi",
+    "model": "a7",
+    "fabYear": 1234
+  },
+  "repairList": [
+    {
+      "task_name": "capota",
+      "price": "333"
+    },
+    {
+      "task_name": "far",
+      "price": "444"
+    }
+  ],
+  "replacementList": [
+    {
+      "task_name": "aripa",
+      "price": "222"
+    },
+    {
+      "task_name": "bara",
+      "price": "123"
+    }
+  ]
+}

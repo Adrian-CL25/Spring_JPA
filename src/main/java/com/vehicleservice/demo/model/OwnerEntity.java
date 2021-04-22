@@ -1,7 +1,6 @@
-package com.vehicleservice.demo.domain.entity;
+package com.vehicleservice.demo.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,7 +13,6 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Builder
 @Table(name = "owner")
 public class OwnerEntity implements Serializable {
     @Id
@@ -30,26 +28,22 @@ public class OwnerEntity implements Serializable {
             columnDefinition = "TEXT")
     private String email;
 
-    @Column(name = "request_id")
-    private Integer requestId;
+//    @Column(name = "request_id")
+//    private Integer requestId;
 
 
     @Column(name = "phone_no")
     private Integer phone;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "owner_id", referencedColumnName = "car_id")
+    @JoinColumn(name = "car_id"/* trebuie un FK pentru a completa relatia */, referencedColumnName = "car_id"/* numele coloanei referentiate din tabelul car*/)
     private CarEntity carEntity;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "repair_id", referencedColumnName = "request_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
     List<Repair> repairList = new ArrayList<>();
 
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "replacement_id", referencedColumnName = "request_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
     List<Replacement> replacementList = new ArrayList<>();
-
-
 
 }
