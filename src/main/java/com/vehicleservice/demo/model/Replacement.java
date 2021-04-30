@@ -25,9 +25,11 @@ public class Replacement implements Serializable {
     private String price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "invoice_id")
     @ToString.Exclude
     @JsonIgnore
     @EqualsAndHashCode.Exclude
-    private OwnerEntity ownerEntity;
+    private InvoiceEntity invoiceEntity;
+
+
 }

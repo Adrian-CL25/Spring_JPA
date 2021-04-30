@@ -1,4 +1,5 @@
 package com.vehicleservice.demo.model;
+
 import lombok.Data;
 
 
@@ -26,8 +27,5 @@ public class CarEntity {
 
     @Column(name = "fab_year")
     private Integer fabYear;
-
-
-
 
 }
