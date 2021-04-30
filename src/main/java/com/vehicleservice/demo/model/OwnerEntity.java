@@ -39,11 +39,11 @@ public class OwnerEntity implements Serializable {
     @JoinColumn(name = "car_id"/* trebuie un FK pentru a completa relatia */, referencedColumnName = "car_id"/* numele coloanei referentiate din tabelul car*/)
     private CarEntity carEntity;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
-    List<Repair> repairList = new ArrayList<>();
-
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
-    List<Replacement> replacementList = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
+//    List<Repair> repairList = new ArrayList<>();
+//
+//
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ownerEntity")
+//    List<Replacement> replacementList = new ArrayList<>();
 
 }

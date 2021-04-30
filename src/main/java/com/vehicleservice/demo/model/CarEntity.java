@@ -27,7 +27,4 @@ public class CarEntity {
     @Column(name = "fab_year")
     private Integer fabYear;
 
-
-
-
 }
