@@ -1,12 +1,14 @@
 package com.vehicleservice.demo.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
 
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "car")
 public class CarEntity {
