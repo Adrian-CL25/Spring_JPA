@@ -49,4 +49,9 @@ public class OwnerController {
         return ownerService.addNewOwner(ownerEntity);
     }
 
+    @PutMapping(value = "/update",produces = MediaType.APPLICATION_JSON_VALUE)
+    public OwnerEntity update(@RequestBody OwnerEntity ownerEntity) {
+        return ownerService.updateOwner(ownerEntity);
+    }
+
 }

@@ -28,6 +28,9 @@ public class OwnerService {
         return ownerRepository.save(newOwner);
     }
 
+    public OwnerEntity updateOwner(OwnerEntity ownerEntity){
+        return ownerRepository.save(ownerEntity);
+    }
 
 
 }
