@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+import java.util.*;
 
 
 @Data
@@ -28,13 +28,14 @@ public class OwnerEntity implements Serializable {
             columnDefinition = "TEXT")
     private String email;
 
+//    @Column(name = "request_id")
+//    private Integer requestId;
+
 
     @Column(name = "phone_no")
     private Integer phone;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "car_id", referencedColumnName = "car_id")
+    @JoinColumn(name = "car_id"/* trebuie un FK pentru a completa relatia */, referencedColumnName = "car_id"/* numele coloanei referentiate din tabelul car*/)
     private CarEntity carEntity;
-
-
 }

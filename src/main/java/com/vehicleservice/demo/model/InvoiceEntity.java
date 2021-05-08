@@ -9,11 +9,18 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "invoice")
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class InvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

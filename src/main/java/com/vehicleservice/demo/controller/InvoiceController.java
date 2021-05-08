@@ -1,5 +1,6 @@
 package com.vehicleservice.demo.controller;
 
+import com.vehicleservice.demo.model.InvoiceCreationRequest;
 import com.vehicleservice.demo.model.InvoiceEntity;
 import com.vehicleservice.demo.model.OwnerEntity;
 import com.vehicleservice.demo.service.InvoiceService;
@@ -23,16 +24,30 @@ public class InvoiceController {
     @Autowired
     private final InvoiceService invoiceService;
 
-    @PostMapping(value = "/invoice/create", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
-    public InvoiceEntity invoiceEntity(@RequestBody @Valid InvoiceEntity invoiceEntity) {
-
-        return invoiceService.createInvoice(invoiceEntity);
-    }
 
     @GetMapping(value = "/invoice/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public InvoiceEntity getInvoiceById(@PathVariable(name = "id") Integer invoice_id) {
         return invoiceService.findInvById(invoice_id);
     }
 
+
+    /*
+
+    {
+    "ownerId": 1,
+    "repairIdsList": [1, 2, 3],
+    "replacementIdsList": [2, 3]
+    }
+     */
+    @PostMapping(value = "/invoice/createUsingRightRequest", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public InvoiceEntity invoiceEntity(@RequestBody @Valid InvoiceCreationRequest invoiceCreationRequest) {
+
+        return invoiceService.createInvoiceUsingCustomRequestObject(invoiceCreationRequest);
+    }
+
+    @GetMapping("/all")
+    public List<InvoiceEntity> getInvoice(){
+        return invoiceService.getInvoiceRepository().findAll();
+    }
 
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -11,7 +12,9 @@ import java.io.Serializable;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "replacement")
+
 public class Replacement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +33,4 @@ public class Replacement implements Serializable {
     @JsonIgnore
     @EqualsAndHashCode.Exclude
     private InvoiceEntity invoiceEntity;
-
-
 }
