@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @Table(name = "replacement")
+
 public class Replacement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -12,7 +11,6 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Table(name = "repair")
 public class Repair implements Serializable {
     @Id
@@ -32,4 +30,6 @@ public class Repair implements Serializable {
     @JsonIgnore
     @EqualsAndHashCode.Exclude
     private InvoiceEntity invoiceEntity;
+
+
 }

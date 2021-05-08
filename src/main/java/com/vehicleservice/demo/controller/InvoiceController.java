@@ -24,11 +24,6 @@ public class InvoiceController {
     @Autowired
     private final InvoiceService invoiceService;
 
-    @PostMapping(value = "/invoice/create", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
-    public InvoiceEntity invoiceEntity(@RequestBody @Valid InvoiceEntity invoiceEntity) {
-
-        return invoiceService.createInvoice(invoiceEntity);
-    }
 
     @GetMapping(value = "/invoice/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public InvoiceEntity getInvoiceById(@PathVariable(name = "id") Integer invoice_id) {
@@ -48,6 +43,11 @@ public class InvoiceController {
     public InvoiceEntity invoiceEntity(@RequestBody @Valid InvoiceCreationRequest invoiceCreationRequest) {
 
         return invoiceService.createInvoiceUsingCustomRequestObject(invoiceCreationRequest);
+    }
+
+    @GetMapping("/all")
+    public List<InvoiceEntity> getInvoice(){
+        return invoiceService.getInvoiceRepository().findAll();
     }
 
 }

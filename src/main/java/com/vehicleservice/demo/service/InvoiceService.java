@@ -23,14 +23,10 @@ import java.util.List;
 public class InvoiceService {
     @Autowired
     private final InvoiceRepository invoiceRepository;
-
     private final RepairRepository repairRepository;
     private final ReplacementRepository replacementRepository;
     private final OwnerRepository ownerRepository;
 
-    public InvoiceEntity createInvoice(InvoiceEntity invoiceEntity) {
-        return invoiceRepository.save(invoiceEntity);
-    }
 
     public InvoiceEntity createInvoiceUsingCustomRequestObject(InvoiceCreationRequest invoiceCreationRequest) {
 
