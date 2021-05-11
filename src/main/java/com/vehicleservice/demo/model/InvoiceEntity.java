@@ -42,4 +42,6 @@ public class InvoiceEntity {
     private OwnerEntity ownerEntity;
 
     private LocalDateTime dataEmitere;
+
+    private Integer totalPrice;
 }

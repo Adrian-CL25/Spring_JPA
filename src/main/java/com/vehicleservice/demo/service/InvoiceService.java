@@ -15,7 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 @Data
@@ -33,24 +36,46 @@ public class InvoiceService {
         var ownerEntity = ownerRepository.findById(invoiceCreationRequest.getOwnerId()).get();
         var repairs = repairRepository.findAllById(invoiceCreationRequest.getRepairIdsList());
         var replacements = replacementRepository.findAllById(invoiceCreationRequest.getReplacementIdsList());
+
+
+        Integer repairPriceList = repairRepository.findAllById(invoiceCreationRequest.getRepairIdsList()).stream()
+                .filter(r-> r.getPrice() != null)
+                .mapToInt(x -> Integer.parseInt(x.getPrice())).sum();
+
+        Integer replacementPriceList = replacementRepository.findAllById(invoiceCreationRequest.getReplacementIdsList()).stream()
+                .filter(y-> y.getPrice() != null)
+                .mapToInt(x -> Integer.parseInt(x.getPrice())).sum();
+
+        Integer totalPriceRepairAndReplacement = repairPriceList + replacementPriceList;
+
+
+
+
+
+
         InvoiceEntity invoiceEntity = InvoiceEntity.builder()
-                                                   .dataEmitere(LocalDateTime.now())
-                                                   .ownerEntity(ownerEntity)// facem legatura cu intrarile deja existente
-                                                   .repairList(repairs)
-                                                   .replacementList(replacements)
-                                                   .build();
-        // facem legatura si invers
+                .dataEmitere(LocalDateTime.now())
+                .totalPrice(totalPriceRepairAndReplacement)
+                .ownerEntity(ownerEntity)
+                .repairList(repairs)
+                .replacementList(replacements)
+                .build();
+
+
+
         repairs.forEach(repair -> repair.setInvoiceEntity(invoiceEntity));
         replacements.forEach(replacement -> replacement.setInvoiceEntity(invoiceEntity));
 
+
         return invoiceRepository.save(invoiceEntity);
+
+
     }
+
 
     public InvoiceEntity findInvById(Integer id) {
         return invoiceRepository.findById(id).orElseThrow(null);
     }
-
-
 
 
 }
